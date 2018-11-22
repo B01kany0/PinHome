@@ -1,3 +1,210 @@
 page-home {
+    .area{
+        height: 15px;
+        border: 2px solid red;
+    }
+    .listedCard{
+        box-shadow: 0 0 5px grey;
+        border-radius: 5px;
+    }
+
+    ion-slide.swiper-slide{
+        // left: 25%;
+    }
+    .start{
+        height: 20px;
+        width: 110vw;
+        // background: red;
+    }
+    .searchBar{
+        border-radius: 550px;
+        background: white;
+        padding-left: 10px;
+    }
+    
+    .theItem{
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .theSlides{
+        // height: 250px;
+        background: #166b85;
+        // border: 2px solid red;
+        height: 250px;
+    }
+
+    .labeler{
+        background: rgba(0, 0, 0, 0);
+        // border: 2px solid red;
+        height: 15px;
+        padding-bottom: 0;
+        h5{
+            color: white;
+        }
+    }
+
+    .slideContent{
+        background: white;
+        height: 120px;
+        width: 0px;
+        border-radius: 5px;
+        padding: 0;
+    }
+    .nearBy{
+        height: 120px;
+        background: white;
+        box-shadow: 0 0 2px white;
+    }
+    #homeImage{
+        height: 75px;
+    }
+    .profile{
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
+    .restOfBody{
+        // border: 2px solid red;
+    }
+    @media screen and (min-width: 441px) and (max-width: 767px){
+        .area{
+            height: 15px;
+            border: 2px solid red;
+        }
+        .listedCard{
+            box-shadow: 0 0 5px grey;
+            border-radius: 5px;
+        }
+    
+        ion-slide.swiper-slide{
+            // left: 25%;
+        }
+        .start{
+            height: 20px;
+            width: 110vw;
+            // background: red;
+        }
+        .searchBar{
+            border-radius: 550px;
+            background: white;
+            padding-left: 10px;
+        }
+        
+        .theItem{
+            background: rgba(0, 0, 0, 0);
+        }
+    
+        .theSlides{
+            // height: 250px;
+            background: #166b85;
+            // border: 2px solid red;
+            height: 400px;
+        }
+    
+        .labeler{
+            background: rgba(0, 0, 0, 0);
+            // border: 2px solid red;
+            height: 15px;
+            padding-bottom: 0;
+            h5{
+                color: white;
+            }
+        }
+    
+        .slideContent{
+            background: white;
+            height: 320px;
+            // width: 0px;
+            border-radius: 5px;
+            padding: 0;
+        }
+        .nearBy{
+            height: 120px;
+            background: white;
+            box-shadow: 0 0 2px white;
+        }
+        #homeImage{
+            height: 450px;
+            border: 2px solid red;
+        }
+        .profile{
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+        }
+        .restOfBody{
+            // border: 2px solid red;
+        }
+    }
+    @media screen and(min-width: 769px) {
+        
+        .area{
+            height: 15px;
+        }
+        .listedCard{
+            box-shadow: 0 0 5px grey;
+            border-radius: 5px;
+        }
+    
+        ion-slide.swiper-slide{
+            // left: 25%;
+        }
+        .start{
+            height: 20px;
+            width: 110vw;
+            // background: red;
+        }
+        .searchBar{
+            border-radius: 550px;
+            background: white;
+            padding-left: 10px;
+        }
+        
+        .theItem{
+            background: rgba(0, 0, 0, 0);
+        }
+    
+        .theSlides{
+            // height: 250px;
+            background: #166b85;
+            // border: 2px solid red;
+            height: 600px;
+        }
+    
+        .labeler{
+            background: rgba(0, 0, 0, 0);
+            // border: 2px solid red;
+            height: 15px;
+            padding-bottom: 0;
+            h5{
+                color: white;
+            }
+        }
+    
+        .slideContent{
+            background: white;
+            height: 320px;
+            // width: 0px;
+            border-radius: 5px;
+            padding: 0;
+        }
+        .nearBy{
+            height: 120px;
+            background: white;
+            box-shadow: 0 0 2px white;
+        }
+        #homeImage{
+            height: 450px;
+            border: 2px solid red;
+        }
+        .profile{
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+        }
+        .restOfBody{
+            // border: 2px solid red;
+        }
+    }
 
 }

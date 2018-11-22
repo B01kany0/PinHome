@@ -1,3 +1,94 @@
 page-view {
 
+    .content{
+        
+    }
+
+    .segment{
+        margin-top:-10px;
+        background-color: white;
+      
+    }
+
+    .cover{
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .round{
+        border: solid 2px white;
+        width: 70px;
+        border-radius: 50%;
+        height: 70px;
+        margin-left: 4%;
+        margin-top: 3%;        
+    }
+
+    h1{
+        text-align: center;
+        font-weight: 100;
+        color: #fff;
+        font-weight: bolder;
+        
+    }
+
+    .flex{
+        display: flex;
+        position: relative;
+    }
+
+    .main{
+        // border: 2px solid red;
+        margin-top:-10px;
+        background-color: #166b85
+    }
+
+    .category{
+        color: white;
+        font-style: italic;
+        font-weight: 100;
+        position: absolute;
+        left:95px;
+        top: 35px;
+    }
+
+
+    
+    ion-icon{
+        color: rgb(223, 219, 219);
+        position: relative;
+        top: -19px;
+    }
+
+    .test{
+        // height: 1000px;
+        background: white;
+    }
+
+    .pictures{
+        height: 120px;
+        // border: solid 2px white;
+        // border-left: solid 2px white;
+    }
+
+    .image{
+        height: 100px;
+    }
+
+    .map{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .fullBtn{
+        position: relative;
+        top: 10%;
+    }
+
+    .buttons{
+        position: relative;
+        bottom: 10px;
+    }
+
 }

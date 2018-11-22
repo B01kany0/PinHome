@@ -7,13 +7,19 @@ import { PinhomeProvider } from '../../providers/pinhome/pinhome';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+orgArray  = new Array();
   constructor(public navCtrl: NavController, public pinhomeProvider: PinhomeProvider) {
-
+  this.getLocation();
+  this.getOrganizations();
   }
 
   getLocation(){
     this.pinhomeProvider.getCurrentLocation();
+  }
+  getOrganizations(){
+    this.pinhomeProvider.getOrganisations().then((data:any) =>{
+      this.orgArray = data;
+    })
   }
 
 }
