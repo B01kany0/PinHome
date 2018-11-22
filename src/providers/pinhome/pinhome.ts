@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
+import { PlaceObject } from '../../app/class'
+// import * as firebase from 'firebase/app';
+
 /*
   Generated class for the PinhomeProvider provider.
 
@@ -8,6 +11,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 */
 @Injectable()
 export class PinhomeProvider {
+  placeNamearray=[];
+  PlaceObject = {} as PlaceObject;
 
   constructor(private geolocation: Geolocation) {
     console.log('Hello PinhomeProvider Provider');
@@ -29,5 +34,16 @@ export class PinhomeProvider {
       // data.coords.longitude
      });
   }
+
+  initializeItems(){
+    this.placeNamearray = this.placeNamearray;
+  }
+
+   getItem (searchbar) {
+     // Reset items back to all of the items
+     // 
+
+   }
+
 
 }
