@@ -8,19 +8,19 @@ import { PlaceObject } from '../../app/class'
   templateUrl: 'home.html'
 })
 export class HomePage {
-  placeNamearray=[];
-  PlaceObject = {} as PlaceObject;
-  items= [];
-
+orgArray  = new Array();
   constructor(public navCtrl: NavController, public pinhomeProvider: PinhomeProvider) {
-
-
-    this.initializeItems();
-
+  this.getLocation();
+  this.getOrganizations();
   }
 
   getLocation(){
     this.pinhomeProvider.getCurrentLocation();
+  }
+  getOrganizations(){
+    this.pinhomeProvider.getOrganisations().then((data:any) =>{
+      this.orgArray = data;
+    })
   }
 
 
@@ -28,15 +28,12 @@ export class HomePage {
   //   this.placeNamearray = this.placeNamearray;
   // }
   initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-    
-    ];
+  
+  
   }
 
 
-  getItems(searchbar){
+  getPlace(searchbar){
     // this.pinhomeProvider.getItems(searchbar)
 
     this.initializeItems();
@@ -50,7 +47,7 @@ export class HomePage {
       return;
     }
 
-    this.items = this.items.filter((v) => {
+    this.orgArray = this.orgArray.filter((v) => {
       if(v.name && q) {
         if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
@@ -59,7 +56,7 @@ export class HomePage {
       }
     });
 
-    console.log(q, this.placeNamearray.length);
+    console.log(q, this.orgArray.length);
 
 
 
