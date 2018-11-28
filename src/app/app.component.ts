@@ -9,14 +9,27 @@ import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { PinhomeProvider } from '../providers/pinhome/pinhome';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = SignInPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public PinhomeProvider: PinhomeProvider) {
+    PinhomeProvider.checkstate().then((data:any)=>{
+      if (data ==1){
+        this.rootPage = HomePage;
+      }
+      else {
+        this.rootPage = SignInPage
+      }
+     })
+
+     
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

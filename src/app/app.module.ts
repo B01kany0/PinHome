@@ -14,6 +14,9 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { ProfilePage } from '../pages/profile/profile';
 import { SearchPage } from '../pages/search/search';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 
 
@@ -59,7 +62,10 @@ firebase.initializeApp({
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PinhomeProvider,
     Geolocation,
-    NativeGeocoder
+    NativeGeocoder,
+    CallNumber,
+   LaunchNavigator,
+   EmailComposer
   ]
 })
 export class AppModule {}

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, Searchbar } from 'ionic-angular';
+import { NavController, Searchbar, LoadingController } from 'ionic-angular';
 import { PinhomeProvider } from '../../providers/pinhome/pinhome';
 import { PlaceObject } from '../../app/class'
 import { database } from 'firebase';
 import { ProfilePage } from '../profile/profile';
 import { SearchPage } from '../search/search';
+import { ViewPage } from '../view/view';
+
 
 
 
@@ -14,114 +16,66 @@ import { SearchPage } from '../search/search';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  orgArray = [];
-  items = [];
-  constructor(public navCtrl: NavController, public pinhomeProvider: PinhomeProvider) {
-    this.getLocation();
-    // this.getOrganizations();
-    this.initializeItems();
-   
-  }
-
-  getLocation() {
-    this.pinhomeProvider.getCurrentLocation();
-  }
-  getOrganizations() {
-    this.pinhomeProvider.getOrganisations().then((data: any) => {
-      this.orgArray = data;
-    })
-  }
-
-
-  // initializeItems(){
-  //   this.placeNamearray = this.placeNamearray;
-  // }
-  ionViewDidLoad() {
+  orgArray  = new Array();
+  searchQuery: string = '';
+  items: string[];
+  orgs =  [];
   
-  }
-  initializeItems() {
-    // this.items.length = 0;
-    this.pinhomeProvider.getPlace().then((data:any)=>{
-      this.items = data ;
-      this.items[""];
-          })
-    //console.log(this.items)
-  }
-
-
-  // getPlace = function (searchbar) {
-   
-
-  //   // this.pinhomeProvider.getPlace().then((data: any) => {
-  //   //   console.log(data);
-      
-  //   //   this.items = data;
-  //     this.initializeItems();
-
-  //       console.log(this.items)
-  //    // console.log(data);
-
-  //     var q = searchbar.srcElement.value;
-
-
-  //     // if the value is an empty string don't filter the items
-  //     if (!q) {
-  //       return;
-  //     }
+    constructor(public navCtrl: NavController, public pinhomeProvider: PinhomeProvider,public loadingCtrl: LoadingController) {
+  this.getNearByOrganizations();
+  this.pinhomeProvider.getOrgNames().then((data:any) =>{
+   this.storedata( data);
+   this.initializeItems();
+  })
   
-  //     this.items = this.items.filter((v) => {
-  //       if (v.name && q) {
-  //         if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-  //           return true;
-  //         }
-  //         return false;
-  //       }
-  //     });
-  
-  //     console.log(this.items);
-  
-  
-
-    
-     
-
-
-
-  //   // set q to the value of the searchbar
-   
-
-
-  // }
-  
-
-
-  test(){
-    this.items.length = 0;
-  }
-
- public  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    const val = ev.target.value;
-    // this.items = [];
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1)
-      })
-      var temp =  this.items;
-      console.log(temp);
-      this.test()
-      console.log(this.items)
-      // this.items = temp;
-      // console.log(temp) 
-      
-  
-
     }
+  storedata(data){
+    this.orgs =  data;
   }
+  
+    
+    getNearByOrganizations(){
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'please wait',
+        duration: 222000
+      });
+      loading.present();
+      this.pinhomeProvider.getCurrentLocation().then((radius:any) =>{
+        this.pinhomeProvider.getOrganisations().then((org:any) =>{
+          this.pinhomeProvider.getNearByOrganisations(radius,org).then((data:any) =>{
+           this.orgArray = data;
+            loading.dismiss();
+          })
+        })
+      })
+    }
+    more(indx){
+      this.navCtrl.push(ViewPage,{orgObject:this.orgArray[indx]})
+    }
+  
+    initializeItems() {
+      this.items =  this.orgs;
+    }
+  
+    getItems(ev: any) {
+      // Reset items back to all of the items
+      this.initializeItems();
+  
+      // set val to the value of the searchbar
+      const val = ev.target.value;
+  
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != "") {
+        this.items = this.items.filter((item) => {
+          return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      }
+    }
+
+    // viewer(){
+    //   this.navCtrl.push(ViewPage,{orgObject:this.orgArray})
+    // }
 
 }
 

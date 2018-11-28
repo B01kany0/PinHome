@@ -1,74 +1,71 @@
 <ion-header no-border-bottom>
-  <ion-navbar color="custom" no-border-bottom>
-    <ion-buttons left>
-      <button ion-button icon-only>
-        <ion-icon ios="ios-more" md="md-more"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-item no-lines class="theItem">
-      <!-- <ion-searchbar maxLength="44" class="searchBar" type="text" placeholder="Search" (ionInput)="getPlace($event)"></ion-input>></ion-input> -->
-        <ion-searchbar maxLength="44" class="searchBar" (ionInput)="getItems($event)" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
-    </ion-item>
-    <ion-buttons right>
-      <button ion-button icon-only outline color="light" class="profile">
-        <ion-icon ios="ios-person" md="md-person"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
-<ion-content>
-
-
-  <div class="theSlides">
+    <ion-navbar color="custom">
+      <div class="top">
+        <ion-item class="hidden">
+          <ion-label>Filtey by</ion-label>
+          <ion-select [(ngModel)]="category" (ionChange)="selectcategory()" color="custom" id="drop">
+            <ion-option value="Orphanage">Orphanage</ion-option>
+            <ion-option value="Disability">Disability</ion-option>
+            <ion-option value="old age">Old Age Homes</ion-option>
+            <ion-option value="theraphy">Theraphy</ion-option>
+            <ion-option value="Psychiatric">Psychiatric centres/Hospital</ion-option>
+            <ion-option value="social centre">Social Centre</ion-option>
+            <ion-option value="Rehab">Rehab</ion-option>
+          </ion-select>
+        </ion-item>
+        <div class="more">
+          <ion-icon name="more"></ion-icon>
+        </div>
+        <ion-searchbar maxLength="44" class="searchBar" type="text" placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>   
+        <button ion-button icon-only outline color="light" class="profile">
+          <ion-icon ios="ios-person" md="md-person"></ion-icon>
+        </button>
+      </div>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
     <ion-item no-lines class="labeler">
       <h5>
         <ion-icon ios="ios-pin" md="md-pin"></ion-icon> Near By</h5>
     </ion-item>
-    <ion-slides loop="true" no-padding slidesPerView="3" speed="1000" autoplay="1000" effect="coverflow">
-      <ion-slide class="slideContent">
-        <ion-card class="nearBy">
-          <div class="nameOfOrg">
-            <p>Aplha</p>
-          </div>
-          <img id="homeImage" src="../../assets/imgs/Template Images/pixel.jpg" alt="">
-          <div class="starRate">
-            <p></p>
-          </div>
-        </ion-card>
-      </ion-slide>
-
-    </ion-slides>
-  </div>
-  <ion-item no-lines class="area">
-    <h5>
-      <ion-icon ios="ios-pin" md="md-pin"></ion-icon> In Your Area</h5>
-  </ion-item>
-  <div class="restOfBody">
-    <ion-card class="listedCard">
-      <ion-list >
-      <ion-item *ngFor="let a of orgArray" >
-        <ion-thumbnail item-start>
-          <img src="../../assets/imgs/Template Images/pixel.jpg">
-        </ion-thumbnail>
-        <h2>{{a}}</h2>
-        <!-- <h3>{{a.orgAddress}}</h3> -->
-        <p><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
-      </ion-item>
-    </ion-list>
-    </ion-card>
-    
-   <div *ngFor="let a of items">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/Template Images/pixel.jpg">
-      </ion-thumbnail>
-      <h2>{{a}}</h2>
-      <!-- <h3>{{a.orgAddress}}</h3> -->
-      <p><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+    <div class="theSlides">
+      <ion-slides slidesPerView="3" initialSlide="3" effect="coverflow">
+        <ion-slide class="trans">
+        </ion-slide>
+        <ion-slide *ngFor="let i of orgArray; let in = index" (click)="more(in)">
+          <ion-card no-padding class="slideCard">
+            <div class="title">
+              <p class="orgName">{{i.orgName}}</p>
+            </div>
+            <ion-card-content no-padding>
+              <img id="homeImage" src="{{i.orgPicture}}" alt="">
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+        <ion-slide class="trans">
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="spacer"></div>
+    <ion-item no-lines class="area">
+      <h5>
+        <ion-icon ios="ios-pin" md="md-pin"></ion-icon> In Your Area</h5>
     </ion-item>
-   </div>
-
-  </div>
-
-</ion-content>
+    <div class="restOfBody">
+      <ion-card class="listedCard" *ngFor="let item of items"> 
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="../../assets/imgs/Template Images/pixel.jpg">
+          </ion-thumbnail>
+          <h2>{{item}}</h2>
+          <p>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+          </p>
+        </ion-item>
+      </ion-card>
+    </div>
+  </ion-content>

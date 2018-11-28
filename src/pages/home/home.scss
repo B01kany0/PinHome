@@ -1,15 +1,34 @@
 page-home {
+    .top{
+        position: relative;
+        background: #166b85;
+    }
+    .slideCard{
+        // border: 2px solid red;
+        height: 150px;
+        // position: absolute;
+        // top: 0;
+        width: 120px;
+        margin: 0 auto;
+    }
+    .trans{
+        opacity: 0;
+    }
     .area{
         height: 15px;
-        border: 2px solid red;
+        // border: 2px solid red;
     }
     .listedCard{
         box-shadow: 0 0 5px grey;
         border-radius: 5px;
     }
-
-    ion-slide.swiper-slide{
-        // left: 25%;
+    .spacer{
+        height: 15px;
+        border: 2px;
+        background: #166b85;        
+    }
+    .orgName{
+        font-size:10px;
     }
     .start{
         height: 20px;
@@ -20,21 +39,43 @@ page-home {
         border-radius: 550px;
         background: white;
         padding-left: 10px;
+        height: 40px;
+        // margin-left:10px;
+        position: absolute;
+        top: -20px;
+        left: 25px;
+        width: 70vw;
+        margin-left: 5%;
     }
     
     .theItem{
-        background: rgba(0, 0, 0, 0);
+        // background: rgba(0, 0, 0, 0);
+        margin-right: 30px;
+        z-index: 0;
     }
-
+    .hidden{
+        opacity: 0;
+        width: 20px;
+        position: absolute;
+        top: -20px;
+    }
+    .more{
+        color: white;
+        position: absolute;
+        top: -15px;
+        z-index: -1;
+        height: 100%;
+        font-size: 25px;
+        padding-left: 7px;
+    }
     .theSlides{
         // height: 250px;
         background: #166b85;
         // border: 2px solid red;
-        height: 250px;
+        height: 150px;
     }
-
     .labeler{
-        background: rgba(0, 0, 0, 0);
+        background: #166b85;
         // border: 2px solid red;
         height: 15px;
         padding-bottom: 0;
@@ -42,7 +83,9 @@ page-home {
             color: white;
         }
     }
-
+    .title{
+        height: 26px;
+    }
     .slideContent{
         background: white;
         height: 120px;
@@ -56,155 +99,29 @@ page-home {
         box-shadow: 0 0 2px white;
     }
     #homeImage{
-        height: 75px;
+        height: 130px;
+        width: 100%;
+        object-fit: cover;
     }
     .profile{
         width: 40px;
         height: 40px;
         border-radius: 40px;
+        position: absolute;
+        right: 0;
+        top: -24px;
     }
-    .restOfBody{
-        // border: 2px solid red;
+    .selector{
+        border: 2px solid red;
+        width: 5px;
+        // display: none;
+        // position: absolute;
     }
-    @media screen and (min-width: 441px) and (max-width: 767px){
-        .area{
-            height: 15px;
-            border: 2px solid red;
-        }
-        .listedCard{
-            box-shadow: 0 0 5px grey;
-            border-radius: 5px;
-        }
-    
-        ion-slide.swiper-slide{
-            // left: 25%;
-        }
-        .start{
-            height: 20px;
-            width: 110vw;
-            // background: red;
-        }
-        .searchBar{
-            border-radius: 550px;
-            background: white;
-            padding-left: 10px;
-        }
-        
-        .theItem{
-            background: rgba(0, 0, 0, 0);
-        }
-    
-        .theSlides{
-            // height: 250px;
-            background: #166b85;
-            // border: 2px solid red;
-            height: 400px;
-        }
-    
-        .labeler{
-            background: rgba(0, 0, 0, 0);
-            // border: 2px solid red;
-            height: 15px;
-            padding-bottom: 0;
-            h5{
-                color: white;
-            }
-        }
-    
-        .slideContent{
-            background: white;
-            height: 320px;
-            // width: 0px;
-            border-radius: 5px;
-            padding: 0;
-        }
-        .nearBy{
-            height: 120px;
-            background: white;
-            box-shadow: 0 0 2px white;
-        }
-        #homeImage{
-            height: 450px;
-            border: 2px solid red;
-        }
-        .profile{
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-        }
-        .restOfBody{
-            // border: 2px solid red;
-        }
+    .labeler2{
+        color: white;
+        position: absolute;
+        z-index: 100;
+        height: 100%;
+        font-size: 15px;
     }
-    @media screen and(min-width: 769px) {
-        
-        .area{
-            height: 15px;
-        }
-        .listedCard{
-            box-shadow: 0 0 5px grey;
-            border-radius: 5px;
-        }
-    
-        ion-slide.swiper-slide{
-            // left: 25%;
-        }
-        .start{
-            height: 20px;
-            width: 110vw;
-            // background: red;
-        }
-        .searchBar{
-            border-radius: 550px;
-            background: white;
-            padding-left: 10px;
-        }
-        
-        .theItem{
-            background: rgba(0, 0, 0, 0);
-        }
-    
-        .theSlides{
-            // height: 250px;
-            background: #166b85;
-            // border: 2px solid red;
-            height: 600px;
-        }
-    
-        .labeler{
-            background: rgba(0, 0, 0, 0);
-            // border: 2px solid red;
-            height: 15px;
-            padding-bottom: 0;
-            h5{
-                color: white;
-            }
-        }
-    
-        .slideContent{
-            background: white;
-            height: 320px;
-            // width: 0px;
-            border-radius: 5px;
-            padding: 0;
-        }
-        .nearBy{
-            height: 120px;
-            background: white;
-            box-shadow: 0 0 2px white;
-        }
-        #homeImage{
-            height: 450px;
-            border: 2px solid red;
-        }
-        .profile{
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-        }
-        .restOfBody{
-            // border: 2px solid red;
-        }
-    }
-
 }
