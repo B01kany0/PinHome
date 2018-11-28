@@ -7,7 +7,7 @@
     </ion-buttons>
     <ion-item no-lines class="theItem">
       <!-- <ion-searchbar maxLength="44" class="searchBar" type="text" placeholder="Search" (ionInput)="getPlace($event)"></ion-input>></ion-input> -->
-        <ion-searchbar maxLength="44" class="searchBar" (ionInput)="getPlace($event)" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+        <ion-searchbar maxLength="44" class="searchBar" (ionInput)="getItems($event)" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
     </ion-item>
     <ion-buttons right>
       <button ion-button icon-only outline color="light" class="profile">
@@ -46,17 +46,28 @@
   </ion-item>
   <div class="restOfBody">
     <ion-card class="listedCard">
-      <ion-item>
+      <ion-list >
+      <ion-item *ngFor="let a of orgArray" >
         <ion-thumbnail item-start>
           <img src="../../assets/imgs/Template Images/pixel.jpg">
         </ion-thumbnail>
-        <h2>Finn</h2>
-        <h3>Don't Know What To Do!</h3>
+        <h2>{{a}}</h2>
+        <!-- <h3>{{a.orgAddress}}</h3> -->
         <p><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
       </ion-item>
+    </ion-list>
     </ion-card>
     
-   
+   <div *ngFor="let a of items">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/Template Images/pixel.jpg">
+      </ion-thumbnail>
+      <h2>{{a}}</h2>
+      <!-- <h3>{{a.orgAddress}}</h3> -->
+      <p><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+    </ion-item>
+   </div>
 
   </div>
 

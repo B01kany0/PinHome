@@ -4,15 +4,35 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+ <ion-header></ion-header>
+<ion-content>
+ 
+<!--      
+      <div class="items" padding>
+        <ion-list no-lines>
+          <div class="textFields">
+            <ion-input type="email" placeholder="Email" value="" [(ngModel)]="email"></ion-input>
+            <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+          </div>
+        </ion-list>
+        <button ion-button block id="button" color="primary" (click)="SignIn()">
+          Sign In
+        </button>
+        <br><br>
+        <p class="forgot" (click)="forgotpassword()">Forgot password?</p>
+      </div>
+      <p>Don't have an account?
+        <b (click)="signup()" class="forgot">Sign Up</b>
+      </p>
+    </div> -->
 
-  <ion-navbar>
-    <ion-title>SignIn</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-list no-lines>
+        <div class="textFields">
+          <ion-input type="email" placeholder="Email" value="" [(ngModel)]="email"></ion-input>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+        </div>
+      </ion-list>
+      <button ion-button block id="button" color="primary" (click)="SignIn()">
+        Sign In
+      </button>
+  </ion-content> 

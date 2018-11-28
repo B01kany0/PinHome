@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import firebase from 'firebase'
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { LoadingController, AlertController } from 'ionic-angular';
+
 /*
   Generated class for the PinhomeProvider provider.
 
@@ -10,7 +12,10 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 */
 @Injectable()
 export class PinhomeProvider {
+  stayLoggedIn;
+  ProfileArr: any;
   placeNamearray=[];
+  items;
   // PlaceObject = {} as PlaceObject;
 
   //firebase instances
@@ -19,11 +24,12 @@ auth = firebase.auth();
 
 //arrays
 oraganisations =  new Array()
+searchOrgArray =  new Array();
 
 //variables
 
 
-  constructor(private geolocation: Geolocation, public nativeGeocoder: NativeGeocoder) {
+  constructor(private geolocation: Geolocation, public nativeGeocoder: NativeGeocoder, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     console.log('Hello PinhomeProvider Provider');
   }
 
@@ -167,15 +173,203 @@ if (down <= 0){
   }
 
 
-  initializeItems(){
-    this.placeNamearray = this.placeNamearray;
-  }
+  // initializeItems(){
+  //    this.items = this.items;
+  // }
 
-   getItem (searchbar) {
+   getPlace () {
      // Reset items back to all of the items
      // 
 
-   }
+     return new Promise((accpt, rej) =>{
+       this.searchOrgArray.length = 0;
+       this.db.ref('OrganizationList').on('value', (data:any)=>{
+         var orgName = data.val();
+        // if (data.val() != null || data.val() != undefined){
+          let oraganisations = data.val();
+          let keys = Object.keys(oraganisations);
+          for (var x = 0; x < keys.length; x++){
+            let OrganisationKeys = keys[x];
+            // let organizationObject ={
+            //   orgName:oraganisations[OrganisationKeys].OrganizationName,
+            //   orgAddress: oraganisations[OrganisationKeys].OrganizationAdress,
+            //   orgContact:oraganisations[OrganisationKeys].ContactDetails,
+            //   orgPicture:oraganisations[OrganisationKeys].Url
+            // }
+            this.searchOrgArray.push(oraganisations[OrganisationKeys].OrganizationName);
+          }
+          accpt(this.searchOrgArray );
+        // }
+       })
+       
+     })
 
+    }
+
+
+   checkstate() {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user != null) {
+          this.stayLoggedIn = 1
+        } else {
+          this.stayLoggedIn = 0
+        }
+        resolve(this.stayLoggedIn)
+      })
+    })
+  }
+  // logout() {
+  //   return new Promise((resolve, reject) => {
+  //     firebase.auth().signOut().then(() => {
+  //       resolve()
+  //     }, (error) => {
+  //       reject(error)
+  //     });
+  //   });
+  // }
+  Signup(email, password, name) {
+    return new Promise((resolve, reject) => {
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Sign in....',
+        duration: 4000000
+      });
+      loading.present();
+      return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("profiles/" + user.uid).set({
+          name: name,
+          email: email,
+          contact: "",
+          downloadurl: '../../assets/download.png'
+        })
+        resolve();
+        loading.dismiss();
+      }).catch((error) => {
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          subTitle: error.message,
+          buttons: [
+            {
+              text: 'ok',
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            }
+          ]
+        });
+        alert.present();
+        console.log(error);
+      })
+    })
+  }
+  SignIn(email, password) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Sign In....',
+      duration: 4000000
+    });
+    loading.present();
+    return new Promise((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+        resolve();
+        loading.dismiss();
+      }).catch((error) => {
+        loading.dismiss();
+        if (error.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
+          const alert = this.alertCtrl.create({
+            subTitle: "It seems like you have not registered to use StreetArt, please check your login information or sign up to get started",
+            buttons: [
+              {
+                text: 'ok',
+                handler: data => {
+                  console.log('Cancel');
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
+        else {
+          const alert = this.alertCtrl.create({
+
+
+            subTitle: error.message,
+            buttons: [
+              {
+                text: 'ok',
+                handler: data => {
+                  console.log('Cancel');
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
+
+      })
+    })
+
+  }
+  retrieve() {
+    let userID = firebase.auth().currentUser;
+    return firebase.database().ref("profiles/" + userID.uid)
+  }
+  profile() {
+    this.ProfileArr.length = 0;
+    return new Promise((pass, fail) => {
+      let userID = firebase.auth().currentUser;
+      firebase.database().ref("profiles/" + userID.uid).on('value', (data: any) => {
+        let details = data.val();
+        this.ProfileArr.push(details);
+      })
+      pass(this.ProfileArr);
+    })
+  }
+  forgotpassword(email) {
+    return new Promise((resolve, reject) => {
+      if (email == null || email == undefined) {
+        const alert = this.alertCtrl.create({
+          subTitle: 'Please enter your Email.',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+      else if (email != null || email != undefined) {
+        firebase.auth().sendPasswordResetEmail(email).then(() => {
+          const alert = this.alertCtrl.create({
+            title: 'Password request Sent',
+            subTitle: "We've sent you and email with a reset link, go to your email to recover your account.",
+            buttons: ['OK']
+
+          });
+          alert.present();
+          resolve()
+        }, Error => {
+          const alert = this.alertCtrl.create({
+            subTitle: Error.message,
+            buttons: ['OK']
+          });
+          alert.present();
+          resolve()
+        });
+      }
+    }).catch((error) => {
+      const alert = this.alertCtrl.create({
+        subTitle: error.message,
+        buttons: [
+          {
+            text: 'ok',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+    })
+  }
 
 }
+
