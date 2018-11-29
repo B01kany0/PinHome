@@ -78,6 +78,14 @@ export class SignInPage {
   // forgotpassword() {
   //   this.navCtrl.push(ForgotPasswordPage)
   // }
+  forgotpassword(object:PlaceObject ) {
+    this.pinhomeProvider.forgotpassword(object.email).then(() => {
+      // this.navCtrl.setRoot(SignupPage);
+    }, (error)=>{
+      alert(error)
+    })     
+    // this.obj.email ="";    
+  }
 
 
 

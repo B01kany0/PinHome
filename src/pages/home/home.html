@@ -17,7 +17,7 @@
           <ion-icon name="more"></ion-icon>
         </div>
         <ion-searchbar maxLength="44" class="searchBar" type="text" placeholder="Search" (ionInput)="getItems($event)"></ion-searchbar>   
-        <button ion-button icon-only outline color="light" class="profile">
+        <button ion-button icon-only outline color="light" class="profile" (click)="profile()">
           <ion-icon ios="ios-person" md="md-person"></ion-icon>
         </button>
       </div>
@@ -52,7 +52,7 @@
         <ion-icon ios="ios-pin" md="md-pin"></ion-icon> In Your Area</h5>
     </ion-item>
     <div class="restOfBody">
-      <ion-card class="listedCard" *ngFor="let item of items"> 
+      <ion-card class="listedCard" *ngFor="let item of items" (click)="viewer(item)"> 
         <ion-item>
           <ion-thumbnail item-start>
             <img src="../../assets/imgs/Template Images/pixel.jpg">

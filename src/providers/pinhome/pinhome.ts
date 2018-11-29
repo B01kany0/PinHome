@@ -387,5 +387,20 @@ if (left <= 0){
     })
   }
 
+  // getUserID1() {
+  //   return new Promise((accpt, rejc) => {
+  //     var userID = firebase.auth().currentUser
+  //     firebase.database().ref("profiles").on("value", (data: any) => {
+  //       var b = data.val();
+  //       if (b !== null) {
+  //       }
+  //       console.log(b);
+  //       accpt(userID.uid);
+  //     }, Error => {
+  //       rejc(Error.message)
+  //     })
+  //   })
+  // }
+
 }
 

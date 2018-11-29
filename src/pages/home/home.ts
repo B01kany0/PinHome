@@ -20,6 +20,7 @@ export class HomePage {
   searchQuery: string = '';
   items: string[];
   orgs =  [];
+  orgObjects=[];
   
     constructor(public navCtrl: NavController, public pinhomeProvider: PinhomeProvider,public loadingCtrl: LoadingController) {
   this.getNearByOrganizations();
@@ -31,7 +32,13 @@ export class HomePage {
     }
   storedata(data){
     this.orgs =  data;
+    console.log(this.orgs);
   }
+
+  storeOrgs(data){
+this.orgObjects = data; 
+console.log(this.orgObjects)
+ }
   
     
     getNearByOrganizations(){
@@ -45,6 +52,7 @@ export class HomePage {
         this.pinhomeProvider.getOrganisations().then((org:any) =>{
           this.pinhomeProvider.getNearByOrganisations(radius,org).then((data:any) =>{
            this.orgArray = data;
+           this.storeOrgs(org)
             loading.dismiss();
           })
         })
@@ -73,9 +81,19 @@ export class HomePage {
       }
     }
 
-    // viewer(){
-    //   this.navCtrl.push(ViewPage,{orgObject:this.orgArray})
-    // }
+    viewer(name){
+      for(let i = 0; i < this.orgObjects.length;i++){
+  if (name == this.orgObjects[i].orgName) {
+  this.navCtrl.push(ViewPage,{orgObject:this.orgObjects[i]})
+  break;
+}
+
+      }
+
+      
+      
+      // this.navCtrl.push(ViewPage,{orgObject:this.item})
+    }
 
 }
 
