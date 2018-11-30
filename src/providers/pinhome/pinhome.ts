@@ -13,6 +13,11 @@ import { LoadingController, AlertController, Option } from 'ionic-angular';
 */
 @Injectable()
 export class PinhomeProvider {
+  SignUp: any;
+  detailArray: any;
+  static getUid1(): any {
+    throw new Error("Method not implemented.");
+  }
   stayLoggedIn;
   ProfileArr: any;
   placeNamearray=[];
@@ -219,7 +224,15 @@ if (left <= 0){
    })
  }
 
-
+ // logout() {
+  //   return new Promise((resolve, reject) => {
+  //     firebase.auth().signOut().then(() => {
+  //       resolve()
+  //     }, (error) => {
+  //       reject(error)
+  //     });
+  //   });
+  // }
 
 
    checkstate() {
@@ -234,16 +247,8 @@ if (left <= 0){
       })
     })
   }
-  // logout() {
-  //   return new Promise((resolve, reject) => {
-  //     firebase.auth().signOut().then(() => {
-  //       resolve()
-  //     }, (error) => {
-  //       reject(error)
-  //     });
-  //   });
-  // }
-  Signup(email, password, name) {
+ 
+  Signup(email, password, name, surname) {
     return new Promise((resolve, reject) => {
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
@@ -255,10 +260,9 @@ if (left <= 0){
         var user = firebase.auth().currentUser
         firebase.database().ref("profiles/" + user.uid).set({
           name: name,
+          surname: surname,
           email: email,
           contact: "",
-          downloadurl: '../../assets/download.png',
-          bio: "You have not yet inserted a description about your skills and abilities, update profile to get started.",
         })
         resolve();
         loading.dismiss();
@@ -293,36 +297,7 @@ if (left <= 0){
         loading.dismiss();
       }).catch((error) => {
         loading.dismiss();
-        if (error.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
-          const alert = this.alertCtrl.create({
-            subTitle: "It seems like you have not registered to use StreetArt, please check your login information or sign up to get started",
-            buttons: [
-              {
-                text: 'ok',
-                handler: data => {
-                  console.log('Cancel');
-                }
-              }
-            ]
-          });
-          alert.present();
-        }
-        else {
-          const alert = this.alertCtrl.create({
-
-
-            subTitle: error.message,
-            buttons: [
-              {
-                text: 'ok',
-                handler: data => {
-                  console.log('Cancel');
-                }
-              }
-            ]
-          });
-          alert.present();
-        }
+     
 
       })
     })
@@ -387,6 +362,16 @@ if (left <= 0){
     })
   }
 
+getProfile(){
+  let userID = firebase.auth().currentUser;
+ this.db.ref("profiles/" + userID.uid).on('value', (data: any) => {
+    this. detailArray.length = 0
+    let details = data.val();
+    this. detailArray.push(details);
+  })
+}
+ 
+
   // getUserID1() {
   //   return new Promise((accpt, rejc) => {
   //     var userID = firebase.auth().currentUser
@@ -401,6 +386,22 @@ if (left <= 0){
   //     })
   //   })
   // }
+
+  // getUserID() {
+  //   return new Promise((accpt, rejc) => {
+  //     var user = firebase.auth().currentUser
+  //     firebase.database().ref("uploads").on("value", (data: any) => {
+  //       var a = data.val();
+  //       if (a !== null) {
+  //       }
+  //       accpt(user.uid);
+  //     }, Error => {
+  //       rejc(Error.message)
+  //     })
+  //   })
+  // }
+
+
 
 }
 

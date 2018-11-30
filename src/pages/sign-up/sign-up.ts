@@ -4,7 +4,7 @@ import { PlaceObject} from '../../app/class';
 import { SignInPage } from '../sign-in/sign-in';
 import { PinhomeProvider } from '../../providers/pinhome/pinhome';
 import { HomePage } from '../home/home';
-AlertController
+
 
 
 
@@ -70,7 +70,7 @@ export class SignUpPage {
       alert.present();
     }
     else {
-      this.pinhomeProvider.Signup(this.email, this.password, this.name).then(() => {
+      this.pinhomeProvider.SignUp(this.email, this.password, this.name).then(() => {
         this.presentLoading1();
         this.navCtrl.setRoot(HomePage);
       }, (error) => {

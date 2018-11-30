@@ -6,17 +6,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ViewPage } from '../pages/view/view'
 import { HomePage } from '../pages/home/home';
-import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { PinhomeProvider } from '../providers/pinhome/pinhome';
+import { ProfilePage } from '../pages/profile/profile';
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SignInPage;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public PinhomeProvider: PinhomeProvider) {
     PinhomeProvider.checkstate().then((data:any)=>{

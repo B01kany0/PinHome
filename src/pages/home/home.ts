@@ -4,8 +4,9 @@ import { PinhomeProvider } from '../../providers/pinhome/pinhome';
 import { PlaceObject } from '../../app/class'
 import { database } from 'firebase';
 import { ProfilePage } from '../profile/profile';
-import { SearchPage } from '../search/search';
 import { ViewPage } from '../view/view';
+import { SignInPage } from '../sign-in/sign-in';
+
 
 
 
@@ -16,6 +17,9 @@ import { ViewPage } from '../view/view';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  checkstate(): any {
+    throw new Error("Method not implemented.");
+  }
   orgArray  = new Array();
   searchQuery: string = '';
   items: string[];
@@ -27,6 +31,7 @@ export class HomePage {
   this.pinhomeProvider.getOrgNames().then((data:any) =>{
    this.storedata( data);
    this.initializeItems();
+   this.checkstate();
   })
   
     }
@@ -95,5 +100,11 @@ console.log(this.orgObjects)
       // this.navCtrl.push(ViewPage,{orgObject:this.item})
     }
 
+    Profile(){
+     
+        this.navCtrl.push(ProfilePage)
+      }
+ 
+  
 }
 

@@ -7,12 +7,63 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Profile</ion-title>
+    <ion-title>profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+
+
+<ion-content padding *ngFor = "let item of detailArray">
+<div class="top">
+  <div class="head">
+    <button ion-button clear icon-only color="light" class="backBTN"><ion-icon name="arrow-back"></ion-icon></button>
+    <button class="editor" ion-button clear color="light">
+      <ion-icon name="brush"></ion-icon>
+    </button>
+    <img class="coverImage" src="../../assets/imgs/hands.jpg" alt="">
+    <img class="DP" src="../../assets/imgs/old.jpg" alt="" imageViewer>
+    <div class="userName">
+      <h3 align="center"> {{item.name}}</h3>
+    </div>
+  </div>
+</div>
+<div class="body">
+  <ion-card class="detail">
+    <p class="subTitles">
+      Email
+    </p>
+    <h3>{{item.email}}</h3>
+  </ion-card>
+  <ion-card class="detail">
+    <p class="subTitles">Address</p>
+    4877 Ugago Street
+    <br>
+    Protea Glen Ext 3
+    <br>
+    JOHANNESBURG
+    <br>
+    1819
+  </ion-card>
+  <ion-card class="detail">
+    <p class="subTitles">Date of Birth</p>
+    1995 March 30
+  </ion-card>
+</div>
 
 </ion-content>
+
+
+<!-- <ion-content padding *ngFor = "let item of detailArray">
+<br>
+<br>
+<br>
+        
+        <p>{{item.email}}</p>
+       
+        <p>
+          {{item.name}}
+        </p>
+
+</ion-content> -->

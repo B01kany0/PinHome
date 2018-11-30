@@ -79,6 +79,7 @@ export class SignInPage {
   //   this.navCtrl.push(ForgotPasswordPage)
   // }
   forgotpassword(object:PlaceObject ) {
+    console.log(object)
     this.pinhomeProvider.forgotpassword(object.email).then(() => {
       // this.navCtrl.setRoot(SignupPage);
     }, (error)=>{
@@ -86,7 +87,9 @@ export class SignInPage {
     })     
     // this.obj.email ="";    
   }
-
+SignUp(){
+  this.navCtrl.push(SignUpPage)
+}
 
 
 }
