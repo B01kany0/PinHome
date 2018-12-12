@@ -1,17 +1,129 @@
-<!--
-  Generated template for the ProfilePage page.
+<ion-content class="body">
+  <div class="popover">
+    <button ion-button clear class="popoverOptions" (click)="editProfile()" color="custom">Edit Profile</button>
+    <button ion-button clear class="popoverOptions" (click)="logOut()" color="custom">Sign Out</button>
+  </div>
+  <ion-fab top left>
+    <button ion-fab clear mini color="transparent" class="back" icon-only (click)="GoTOHomePage()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab top right>
+    <button ion-fab clear mini color="transparent" class="settings" icon-only (click)="showPopover()">
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-fab>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
 
   <ion-navbar>
     <ion-title>profile</ion-title>
   </ion-navbar>
+  <div class="body" (click)="bodyClick()">
+    <div class="navs">
 
-</ion-header>
+      <div class="profile" *ngFor="let item of detailArray">
+        <div class="gradient">
+          <div class="username">
+            <h3>{{item.name}} {{item.surname}}</h3>
+            <!-- <p id="reviews">Made {{totrating}} Reviews</p> -->
+          </div>
+        </div>
+        <img src="{{item.downloadurl}}" class="displayPicture" alt="">
+        <div class="restOfBody">
+          <p class="infogram" id="theAbout">About</p>
+          <ion-card class="infoCard" padding>
+            <p class="subInfogram">email</p>
+            <p>{{item.email}}</p>
+            <br>
+            <p class="subInfogram">
+              Address
+            </p>
+            <p>{{item.address}}</p>
+          </ion-card>
 
+          <p class="infogram" id="myReviews">My Reviews ({{totrating}})</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-slides slidesPerView="2" color="dark">
+      <div class="empty" *ngIf="ratings.length == 0 || ratings.length == undefined">
+        <img class="telescope" src="../../assets/imgs/Defaults/empty.png" alt="">  
+        <p class="itsEmpty">You haven't made any reviews so far...</p>
+        </div>
+    <div *ngFor="let i of ratings; let ind = index" (click)="viewMore(ind)">
+      <ion-slide>
+        <ion-card class="list">
+          <h3 class="orgName">{{i.orgName}}</h3>
+          <div class="stars">
+            <div *ngIf="i.rating == 0; then loggedIn0">
+            </div>
+            <div *ngIf="i.rating == 1; then loggedIn1">
+            </div>
+            <div *ngIf="i.rating == 2; then loggedIn2">
+            </div>
+            <div *ngIf="i.rating == 3; then loggedIn3">
+            </div>
+            <div *ngIf="i.rating == 4; then loggedIn4">
+            </div>
+            <div *ngIf="i.rating == 5; then loggedIn5">
+            </div>
+            <ng-template #loggedIn0>
+              <i>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </i>
+            </ng-template>
+            <ng-template #loggedIn1>
+              <i>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </i>
+            </ng-template>
+            <ng-template #loggedIn2>
+              <i>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </i>
+            </ng-template>
+            <ng-template #loggedIn3>
+              <i>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </i>
+            </ng-template>
+            <ng-template #loggedIn4>
+              <i>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </i>
+            </ng-template>
+            <ng-template #loggedIn5>
+              <i>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </i>
+            </ng-template>
+          </div>
+          <div class="overlay">
 
 
 
@@ -67,3 +179,11 @@
         </p>
 
 </ion-content> -->
+          </div>
+          <img class="orgImage" src="{{i.orgPicture}}" alt="">
+
+        </ion-card>
+      </ion-slide>
+    </div>
+  </ion-slides>
+</ion-content>

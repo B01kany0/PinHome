@@ -1,0 +1,81 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header class="head">
+
+  <ion-buttons left>
+     <button ion-button color="btn" icon-only clear (click)="GoToProfile()">
+       <ion-icon class="arrow" name="arrow-back" id="mark"></ion-icon>
+     </button>
+   </ion-buttons>
+   <ion-buttons right>
+     <button class="Check" ion-button color="btn" clear icon-only (click)="uploadPicture()">
+       <ion-icon name="checkmark" id="mark"></ion-icon>
+     </button>
+   </ion-buttons>
+
+</ion-header> -->
+
+
+<ion-content padding class="content">
+  <ion-fab top left>
+    <button class="theFab" ion-fab mini color="transparent" icon-only clear (click)="GoToProfile()">
+      <ion-icon class="arrow" name="arrow-back" id="mark"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab top right>
+    <button class="theFab" ion-fab mini color="transparent" icon-only (click)="uploadPicture()">
+      <ion-icon style="color: #166b85" name="checkmark"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <div class="round" align="cenetr">
+    <img class="picture" src="{{downloadurl}}" imageViewer>
+    <h1>{{name}}</h1>
+  </div>
+  <div class="fileChooser">
+    <div>
+      <label for="file" id="cam">
+        <ion-icon class="Add" name="add-circle"></ion-icon>
+      </label>
+      <input id="file" type="file" accept="image/*" (change)="insertpic($event)">
+    </div>
+  </div>
+  <br>
+
+  <div class="list">
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="person"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="name" [(ngModel)]="name" placeholder="Enter name"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="person"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="surname" [(ngModel)]="surname"  placeholder="Surname"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="home"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="address" [(ngModel)]="address" placeholder="Physical address"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item class="item" no-lines class="item">
+      <ion-label>
+        <ion-icon name="mail"></ion-icon>
+      </ion-label>
+      <ion-input type="email" [value]="email" [(ngModel)]="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <br>
+  </div>
+
+</ion-content>

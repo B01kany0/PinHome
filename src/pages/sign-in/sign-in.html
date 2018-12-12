@@ -44,3 +44,92 @@
       <br><br>
         <p class="forgot" (click)="forgotpassword()">Forgot password?</p>
   </ion-content> 
+<ion-header class="theHeader">
+<div class="round1"></div>
+<ion-fab top left class="backBtn">
+    <button color="light" clear ion-button icon-only (click)="Back()">
+      <ion-icon class="arrow" name="arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+ <div class="round2"></div>
+
+ <div class="round3"></div>
+ <div class="round4"></div>
+</ion-header>
+
+
+<ion-content class="content">
+  
+  <!-- <div align="center" class="picture">
+      <img class="logo" src="../../assets/imgs/PinHome icon.png">
+      <p>PinHome</p>
+    </div>
+    <div class="stuff">
+        <h1 padding>Sign In</h1>
+
+        <div align="center">
+            <ion-list class="list" align="center">
+        
+                  <ion-item class="item">
+                      <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+                      <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+                    </ion-item>
+        
+                    <ion-item class="item">
+                        <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+                        <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+                      </ion-item>
+
+                      <button ion-button clear color="segments">Forgot your password?</button>
+              
+              </ion-list>
+            </div>
+              <div align="center">
+              <button class="btn" ion-button color="segments" outline (click)="SignIn()">Login</button>
+              <button ion-button clear color="dark" (click)="GoToSignup()">Don't have an accont?<b>SIGN UP</b></button>
+            </div>
+
+
+
+          
+    </div>
+<div class="whole">
+
+  
+</div>
+ -->
+
+ 
+
+ <div align="center" class="picture">
+    <img class="logo" src="../../assets/imgs/PinHome icon.png">
+    <p>PinHome</p>
+  </div>
+
+  <!-- <h1 padding>Sign In</h1> -->
+
+        <div align="center">
+            <ion-list class="list" align="center">
+        
+                  <ion-item class="item">
+                      <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+                      <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+                    </ion-item>
+        
+                    <ion-item class="item">
+                        <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+                        <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+                      </ion-item>
+
+              
+              </ion-list>
+            </div>
+              <div align="center">
+              <button class="btn" ion-button color="bg" (click)="SignIn()">Login</button>
+              <button class="btn2" ion-button clear color="segments" (click)="forgotpassword()">Forgot your password?</button>
+              <button class="btn3" ion-button clear color="dark" (click)="GoToSignup()">Don't have an account?<b>Sign Up</b></button>
+            </div>
+
+
+
+</ion-content>

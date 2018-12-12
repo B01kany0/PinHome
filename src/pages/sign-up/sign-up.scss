@@ -1,3 +1,127 @@
 page-sign-up {
-
+    .arrow{
+        text-shadow: 0 0 10px black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    }
+    .ion-icon{
+        color: white
+    }
+    .content{
+        background-color: #ffffff;
+       
+    }
+    p{
+        position: relative;
+        bottom: 16px;
+        color: rgb(10, 10, 10)
+    }
+    // .logo{
+    //     transition: 1s;
+    //     width: 25vw;
+    // }
+    .picture{
+        position: absolute;
+        left: 40%;
+        top: 15%;
+        width: 20%;
+        // margin-bottom: 300px;
+        // border: 2px solid red;
+        // margin-top: 50px;
+        z-index: 10000;
+        // transform: rotateZ(-30DEG)
+    }
+     .logo{
+            transition: 1s;
+            width: 150px;
+        }
+    // .stuff{
+    //     position: absolute;
+    //     top: -5%;
+    //     // left: 0;
+    //     width: 100vw;
+    //     margin: 0 auto;
+    // }
+    // h1{
+    //     font-weight: 100;
+    //     font-size: 2.5em;
+    //     // padding-bottom: 100%;
+    //     text-align: center;
+    //     position: relative;
+    //     bottom: -190px;
+    // }
+    .list{
+        width: 70%;
+        position: relative;
+        top: 220px;
+        color: white;
+    }
+    ion-icon{
+        color: white;
+    }
+    .signInBtn{
+        position: relative;
+        left: 0;
+        bottom: -220px;
+        text-transform: capitalize;
+        // z-index: 100000000000000000000000000000000000000000000000000000;
+    }
+    .item{
+        background-color:   #B5BDBF;
+        color: white;
+        border-radius: 50px;
+        // border: solid 3px #166b85;
+        margin-bottom: 10px;
+        ::-webkit-input-placeholder{
+            color: rgb(231, 227, 227);
+        }
+    }
+    .btn{
+        border-radius: 50px;
+        width: 60%;
+        position: relative;
+        bottom: -220px;
+        transition: 300ms;
+        // left: 60px
+        text-transform: capitalize;
+    }
+    
+    .theHeader{
+        height: 0;
+    }
+    .round1{
+        width: 180px;
+        height: 180px;
+        border-radius: 100%;
+        background-color: #166b85;
+        position: absolute;
+        top: -30px;
+        left: -80px;
+    }
+    .round2{
+        width: 180px;
+        height: 180px;
+        border-radius: 100%;
+        background-color: #328097;
+        position: absolute;
+        top: -100px;
+        // left: 30px;
+    }
+    .round3{
+        width: 180px;
+        height: 180px;
+        border-radius: 100%;
+        background-color: #166b85;
+        position: absolute;
+        top: 460px;
+        right: -25%;
+    }
+    .round4{
+        width: 180px;
+        height: 180px;
+        border-radius: 100%;
+        background-color: #448da3;
+        position: absolute;
+        top: 510px;
+        left: 200px;
+    }
 }

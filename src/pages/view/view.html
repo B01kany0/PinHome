@@ -82,6 +82,210 @@
             </ion-col>
             <ion-col>
               <button ion-button block color="segments" (click)="email(i.orgEmail)">Email</button>
+  <!-- <ion-navbar class="Nav"> -->
+  <!-- <ion-title>View</ion-title> -->
+  <!-- </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content class="content" (ionScroll)="scroller($event)" *ngFor="let i of orgArray">
+  <ion-fab top left class="backBtn">
+    <button color="light" clear ion-button icon-only (click)="Back()">
+      <ion-icon class="arrow" name="arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+  <img class="cover" src="{{i.orgPicture}}">
+  <div class="main">
+    <div class="flex">
+
+      <!-- <ion-row> -->
+      <!-- <ion-col col-3> -->
+      <img class="round" src="../../assets/imgs/home-ministries-1 (1).png"> &ensp;
+      <!-- </ion-col> -->
+
+      <ion-grid class="TheGrid">
+        <ion-row>
+          <ion-col>
+            <h1 class="name">{{i.orgName}}</h1>
+            <p class="category">{{i.orgCat}}</p>
+            
+
+          </ion-col>
+        </ion-row>
+        <ion-row class="stars1" no-padding align="center">
+          <ion-col class="TheCol" no-padding>
+            <div class="seperator">
+              
+            </div>
+            <div *ngIf="i.rating == 0; then loggedIn0">
+            </div>
+            <div *ngIf="i.rating == 1; then loggedIn1">
+            </div>
+            <div *ngIf="i.rating == 2; then loggedIn2">
+            </div>
+            <div *ngIf="i.rating == 3; then loggedIn3">
+            </div>
+            <div *ngIf="i.rating == 4; then loggedIn4">
+            </div>
+            <div *ngIf="i.rating == 5; then loggedIn5">
+            </div>
+            <ng-template #loggedIn0>
+
+              <p>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+              </p>
+
+            </ng-template>
+            <ng-template #loggedIn1>
+              <p>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn2>
+              <p>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn3>
+              <p>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn4>
+              <p>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="sta"></ion-icon>
+                <ion-icon class="Gold" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn5>
+              <p>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+                <ion-icon class="Gold" name="star"></ion-icon>
+              </p>
+            </ng-template>
+
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding>
+          <ion-col class="TheCol2">
+              <div class="seperator">
+              
+                </div>
+                <div class="seperator">
+              
+                  </div>
+            <p class="P">{{i.orgAbout}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+    <ion-grid class="contact" align="center">
+      <ion-row>
+        <ion-col>
+            <div class="seperator">
+              
+              </div>
+              <div class="ioSeperator"></div>
+
+            <ion-icon color="bg" name="navigate" (click)="directions(i.orgAddress)"></ion-icon>
+    
+        </ion-col>
+        <ion-col>
+            <div class="seperator">
+              
+              </div>
+              <div class="ioSeperator"></div>
+
+            <ion-icon color="bg" name="call" (click)="call(i.orgContact)"></ion-icon>
+
+        </ion-col>
+        <ion-col>
+            <div class="seperator">
+              
+              </div>
+              <div class="ioSeperator"></div>
+
+            <ion-icon color="bg" name="mail" (click)="email(i.orgEmail)"></ion-icon>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+
+  </div>
+  <div class="segment" style="margin-top: 10px">
+    <ion-segment class="theSeg" color="bg" [(ngModel)]="pet">
+      <!-- <ion-segment-button value="About" (click)="reposition($event)">
+            About
+          </ion-segment-button> -->
+      <!-- <ion-segment-button value="Location" (click)="reposition($event)">
+            Location
+          </ion-segment-button> -->
+      <ion-segment-button class="segbut" value="Gallery" (click)="reposition($event)">
+        Gallery
+      </ion-segment-button>
+      <ion-segment-button class="segbut" value="Reviews" (click)="reposition($event)">
+        Reviews
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+
+
+  <div class="switch" padding [ngSwitch]="pet">
+    <!-- <ion-list class="about" *ngSwitchCase="'About'"> -->
+    <!-- <h1 class="info">About {{i.orgName}} {{i.orgCat}}</h1> -->
+
+
+    <!--   
+          <div padding>
+          </div>
+        </ion-list> -->
+
+    <ion-list *ngSwitchCase="'Gallery'">
+      <div class="thecontent">
+        <div *ngIf="orgArray.length == 0 || orgArray.length == undefined">
+          <img src="../../assets/empty.JPG">
+          <p>There are no reviews avaliable yet .....</p>
+        </div>
+        <ion-grid no-padding align="center" class="pictures">
+          <ion-row *ngFor="let a of orgArray">
+            <ion-col no-padding col-4 class="colume">
+              <img class="Galleryimage" [src]="a.orgGallery" imageViewer>
+            </ion-col>
+            <ion-col no-padding col-4 class="colume">
+              <img class="Galleryimage" [src]="a.orgGallery" imageViewer>
+            </ion-col>
+            <ion-col no-padding col-4 class="colume">
+              <img class="Galleryimage" [src]="a.orgGallery" imageViewer>
             </ion-col>
           </ion-row>
   
@@ -227,3 +431,143 @@
       </ion-list>
     </div>
   </ion-content>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Reviews'">
+      <div class="StarCard">
+        <div class="ratings" align="center">
+            <div  *ngIf="rateState == false; then loggedIn5 ">
+              </div>
+              <div  *ngIf="rateState == true; then loggedIn2">
+                </div>
+              <ng-template #loggedIn5>
+                  <h1 class="h1">
+                      <ion-icon class="Sstar" name={{Star1}} (click)="comment('1')"></ion-icon>
+                      <ion-icon class="Sstar" name={{Star2}} (click)="comment('2')"></ion-icon>
+                      <ion-icon class="Sstar" name={{Star3}} (click)="comment('3')"></ion-icon>
+                      <ion-icon class="Sstar" name={{Star4}} (click)="comment('4')"></ion-icon>
+                      <ion-icon class="Sstar" name={{Star5}} (click)="comment('5')"></ion-icon>
+                  </h1>
+                  <h3>Rate this organisation!</h3>
+                </ng-template>
+                <ng-template #loggedIn2>
+                    <!-- <h1 class="h1">
+                        <ion-icon class="Sstar" name={{Star1}} ></ion-icon>
+                        <ion-icon class="Sstar" name={{Star2}} ></ion-icon>
+                        <ion-icon class="Sstar" name={{Star3}} ></ion-icon>
+                        <ion-icon class="Sstar" name={{Star4}} ></ion-icon>
+                        <ion-icon class="Sstar" name={{Star5}} ></ion-icon>
+                    </h1> -->
+                    <h3 class="OrgMessage">looks like you have already rated this organisation, nice!</h3>
+                  </ng-template>
+        </div>
+      </div>
+      <!-- <ion-card class="Reviews" *ngFor="let a of commentArr">
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="../../assets/imgs/him.gif">
+              </ion-avatar>
+              <h2>{{a.username}}</h2>
+               <P>{{a.rating}} Stars Rating</P>
+              <p>{{a.date}}</p>
+            </ion-item>
+            <ion-card-content>
+              <p>{{a.comment}}</p>
+            </ion-card-content>
+          </ion-card> -->
+
+
+      <ion-card class="comments">
+        <div class="theDiv" *ngFor="let a of commentArr">
+          <ion-item>
+            <ion-avatar item-start>
+              <img [src]="a.url">
+            </ion-avatar>
+            <b>
+              <h2>{{a.username}}</h2>
+            </b>
+            <p style="color: #166b85">{{a.date}}</p>
+            <div *ngIf="a.rating == 0; then loggedIn0">
+            </div>
+            <div *ngIf="a.rating == 1; then loggedIn1">
+            </div>
+            <div *ngIf="a.rating == 2; then loggedIn2">
+            </div>
+            <div *ngIf="a.rating == 3; then loggedIn3">
+            </div>
+            <div *ngIf="a.rating == 4; then loggedIn4">
+            </div>
+            <div *ngIf="a.rating == 5; then loggedIn5">
+            </div>
+            <ng-template #loggedIn0>
+
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+              </p>
+
+            </ng-template>
+            <ng-template #loggedIn1>
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn2>
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn3>
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn4>
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star-outline"></ion-icon>
+              </p>
+            </ng-template>
+            <ng-template #loggedIn5>
+              <p>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+                <ion-icon class="TheStar" name="star"></ion-icon>
+              </p>
+            </ng-template>
+          </ion-item>
+          <ion-card-content>
+            <p class="message">{{a.comment}}</p>
+          </ion-card-content>
+          <hr>
+        </div>
+      </ion-card>
+
+    </ion-list>
+  </div>
+  <!-- <div *ngIf="commentArr.length == 0 || commentArr.length == undefined">
+          <img src="../../assets/empty.JPG">
+          <p>There are no reviews avaliable yet .....</p>
+         </div> -->
+</ion-content>

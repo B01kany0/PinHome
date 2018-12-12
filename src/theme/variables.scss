@@ -6,10 +6,14 @@
 $font-path: "../assets/fonts";
 
 
+
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
+
+
+
 
 
 @import "ionic.globals";
@@ -32,7 +36,6 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
@@ -41,6 +44,14 @@ $colors: (
   dark:       #222,
   custom: #166b85,
   segments: #b6ad2d,
+  segments: #b6ad2d,
+  btn: #13b8ca,
+  bg: #166b85,
+  custom: #166b85,
+  custom1 : #166b85,
+  custom2: #42d3ff,
+  transparent: rgba(0, 0, 0, 0),
+  
 );
 
 
@@ -54,7 +65,7 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$toolbar-md-title-text-color: red;
 
 
 

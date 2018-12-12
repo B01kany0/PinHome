@@ -4,6 +4,7 @@ import { PlaceObject} from '../../app/class';
 import { SignInPage } from '../sign-in/sign-in';
 import { PinhomeProvider } from '../../providers/pinhome/pinhome';
 import { HomePage } from '../home/home';
+import { ProfilePage } from '../profile/profile';
 
 
 
@@ -28,6 +29,7 @@ export class SignUpPage {
   PlaceObject = {} as object;
   errMsg;
 
+  surname;
   constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController,public pinhomeProvider: PinhomeProvider,public alertCtrl:AlertController ) {
   }
 
@@ -73,6 +75,9 @@ export class SignUpPage {
       this.pinhomeProvider.SignUp(this.email, this.password, this.name).then(() => {
         this.presentLoading1();
         this.navCtrl.setRoot(HomePage);
+      this.pinhomeProvider.Signup(this.email,this.password,this.name,this.surname).then(() => {
+        // this.presentLoading1();
+        this.navCtrl.push(ProfilePage);
       }, (error) => {
         console.log(error.message);
       })
@@ -89,4 +94,14 @@ export class SignUpPage {
     loader.present();
   }
 
+  presentLoading1() {
+    const loader = this.loadingCtrl.create({
+      content: "loading....",
+      duration: 4000
+    });
+    loader.present();
+  }
+  Back(){
+this.navCtrl.pop()  
+}
 }

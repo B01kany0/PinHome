@@ -1,0 +1,78 @@
+<!--
+  Generated template for the AddOrganizationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddOrganization</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>orgname:</ion-label>
+      <ion-input type="text" #organization ></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>aboutorg:</ion-label>
+      <ion-input type="text" #AboutOrg maxLength="250"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>contract details:</ion-label>
+      <ion-input type="number" #contactDetails></ion-input>
+  </ion-item>
+  <br>
+  <!-- <ion-item>
+    <ion-label>price:</ion-label>
+      <ion-input type="number" #price></ion-input>
+  </ion-item>
+  <br> -->
+  <ion-item>
+    <ion-label>Email:</ion-label>
+      <ion-input type="email" #email></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label>address:</ion-label>
+      <ion-input type="text" #address (change)="initMap(address.value)"></ion-input>
+  </ion-item>
+  <br>
+  <p id="map" style="height:250px"></p>
+  <br>
+
+category:
+<ion-list>
+  <ion-item>
+    <ion-select  #select>
+      <ion-option value="Orphanage">Orphanage</ion-option>
+      <ion-option value="Disability">Disability</ion-option>
+      <ion-option value="old age">Old Age Homes</ion-option>
+      <ion-option value="theraphy">Theraphy</ion-option>
+      <ion-option value="Psychiatric">Psychiatric centres/Hospital</ion-option>
+      <ion-option value="social centre">Social Centre</ion-option>
+      <ion-option value="Rehab">Rehab</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+cover page:<br>
+<input type="file" accept="image/*"  (change)="InsertPicture($event)"><br>
+<img class="galImg" src="{{urlCover}}" alt="">
+<br>
+Logo page:<br>
+<input type="file" accept="image/*"  (change)="InsertLogo($event)"><br>
+<img class="galImg" src="{{urlLogo}}" alt="">
+<br>
+Gallery page:<br>
+<input type="file" accept="image/*"  (change)="InsertGallery($event)"><br>
+<img class="galImg" src="{{urlGallery}}" alt="">
+<br>
+<button ion-button (click)="addOrganizations(organization.value,address.value,contactDetails.value,email.value,AboutOrg.value,select.value)">save data</button>
+</ion-content>
